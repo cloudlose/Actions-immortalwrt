@@ -65,29 +65,22 @@ kmod-usb-net-rndis
 
 目前开启的Realtek系列网卡
 
-kmod-rtw88-8812a
 
 kmod-rtw88-8812au
 
-kmod-rtw88-8814a
 
 kmod-rtw88-8814au
 
-kmod-rtw88-8821a
 
 kmod-rtw88-8821au
 
-kmod-rtw88-8821c
 
 kmod-rtw88-8821cu和rtl8812cu通用
 
-kmod-rtw88-8822b
 
 kmod-rtw88-8822bu
 
-kmod-rtw88-8822c
 
-kmod-rtw88-8822cs
 
 kmod-rtw88-8822cu和rtl8812cu通用
 

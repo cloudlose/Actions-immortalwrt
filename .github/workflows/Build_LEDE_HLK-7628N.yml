@@ -199,7 +199,7 @@ jobs:
         ----------------------
         设备: HILINK HLK-7628N WIFI路由模块
         时间: $(date +"%Y-%m-%d %H:%M")
-        内核版本: 6.12.X
+        内核版本: 5.X.X
         源码仓库: $REPO_URL
         分支: $REPO_BRANCH
         EOF

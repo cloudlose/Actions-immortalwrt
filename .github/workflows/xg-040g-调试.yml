@@ -129,6 +129,15 @@ jobs:
             exit 1
           fi
 
+      - name: Free up disk space
+        run: |
+          sudo mkdir -p /mnt/openwrt/{dl,staging_dir,build_dir}
+          sudo chown -R $USER:$GROUPS /mnt/openwrt
+          ln -sfn /mnt/openwrt/dl openwrt/dl
+          ln -sfn /mnt/openwrt/staging_dir openwrt/staging_dir
+          ln -sfn /mnt/openwrt/build_dir openwrt/build_dir
+          df -H
+
       - name: Load custom feeds
         run: |
           [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default

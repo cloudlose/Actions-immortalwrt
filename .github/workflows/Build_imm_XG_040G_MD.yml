@@ -77,6 +77,8 @@ jobs:
         sudo -E apt-get -y update
         sudo -E apt-get -y install $(curl -fsSL https://raw.githubusercontent.com/xuxin1955/depend_ubuntu2204_openwrt/refs/heads/main/depend_ubuntu2204_openwrt)
 
+        echo "status=success" >> "$GITHUB_OUTPUT"
+
     - name: mkbootimg build
       run: |
         wget https://github.com/xuxin1955/depend_ubuntu2204_openwrt/releases/download/ubuntu_26.04_LTS_mkbootimg/mkbootimg_34.0.5-12build1_all.deb
@@ -105,18 +107,7 @@ jobs:
        python3 -m pip install Unidecode pyelftools
        python3 -m pip --version
        python3 -c "import setuptools.build_meta; print('setuptools.build_meta OK')"
-       
-    - name: Debug clone condition
-      env:
-       INIT_STATUS: ${{ steps.init.outputs.status }}
-       SUCCESS_FLAG: ${{ success() }}
-      run: |
-        echo "--- Debug Info ---"
-        echo "init status = $INIT_STATUS"
-        echo "success()   = $SUCCESS_FLAG"
-
-
-    
+        
         
     - name: Clone source code
       id: codes

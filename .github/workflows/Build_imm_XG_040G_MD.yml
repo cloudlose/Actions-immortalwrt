@@ -108,8 +108,9 @@ jobs:
        
     - name: Debug clone condition
       run: |
-        echo "steps.init.outputs.status = ${{ steps.init.outputs.status }}"
-        echo "success() = ${{ success() }}"
+        echo "init status = ${{ steps.init.outputs.status }}"
+        echo "success()   = ${{ success() }}"
+
     
         
     - name: Clone source code

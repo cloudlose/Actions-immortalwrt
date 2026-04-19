@@ -39,7 +39,7 @@ cp -f "target/linux/airoha/dts/an7581-xg-040g-md.dts" "../target/linux/airoha/dt
 mkdir -p "../target/linux/airoha/patches-6.12"
 cp -f "target/linux/airoha/patches-6.12/117-03-airoha_npu_eagle_add_ser.patch" "../target/linux/airoha/patches-6.12/117-03-airoha_npu_eagle_add_ser.patch"
 mkdir -p "../target/linux/airoha/patches-6.12"
-cp -f "target/linux/airoha/patches-6.12/180-v7.1-net-airoha-Fix-memory-leak-in-airoha_qdma_rx_process.patch" "../target/linux/airoha/patches-6.12/180-v7.1-net-airoha-Fix-memory-leak-in-airoha_qdma_rx_process.patch"
+cp -f "target/linux/airoha/patches-6.12/140-v7.1-net-airoha-Fix-memory-leak-in-airoha_qdma_rx_process.patch" "../target/linux/airoha/patches-6.12/140-v7.1-net-airoha-Fix-memory-leak-in-airoha_qdma_rx_process.patch"
 mkdir -p "../target/linux/airoha/patches-6.12"
 cp -f "target/linux/airoha/patches-6.12/620-net-pcs-airoha-fix-USXGMII-rate-adaptation-on-speed.patch" "../target/linux/airoha/patches-6.12/620-net-pcs-airoha-fix-USXGMII-rate-adaptation-on-speed.patch"
 mkdir -p "../target/linux/airoha/patches-6.12"

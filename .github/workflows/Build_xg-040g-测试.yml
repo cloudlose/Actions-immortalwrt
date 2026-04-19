@@ -122,12 +122,19 @@ jobs:
           echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           echo "COMMIT_MSG=$(git log -1 --pretty=format:%s)" >> $GITHUB_ENV
           echo "COMMIT_DATE=$(git log -1 --pretty=format:"%Y-%m-%d %H:%M:%S" --date=local)" >> $GITHUB_ENV
-
+          
           echo "=== 验证当前 Git 分支 ==="
           git branch -a
           echo "当前分支: $(git rev-parse --abbrev-ref HEAD)"
           echo "远程地址: $(git remote -v)"
           echo "=== 验证结束 ==="
+          # 获取真实分支或 Tag 并导出 BUILD_REF
+          if git describe --tags --exact-match &>/dev/null; then
+             echo "BUILD_REF=$(git describe --tags --exact-match)" >> $GITHUB_ENV
+          else
+             echo "BUILD_REF=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+          fi
+          echo "Detected BUILD_REF: $BUILD_REF"
 
 
 
@@ -241,7 +248,7 @@ jobs:
           设备型号: XG-040G-MD
           构建时间: $(date +"%Y-%m-%d %H:%M")
           源码仓库: ${{ env.REPO_URL }}
-          分支/Tag: ${{ env.REPO_BRANCH }}
+          分支/Tag: ${{ env.BUILD_REF }}
           使用补丁: ${{ env.SELECTED_PATCH }}
           EOF
 

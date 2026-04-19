@@ -128,13 +128,16 @@ jobs:
           echo "当前分支: $(git rev-parse --abbrev-ref HEAD)"
           echo "远程地址: $(git remote -v)"
           echo "=== 验证结束 ==="
-          # 获取真实分支或 Tag 并导出 BUILD_REF
+          
           if git describe --tags --exact-match &>/dev/null; then
-             echo "BUILD_REF=$(git describe --tags --exact-match)" >> $GITHUB_ENV
+             TAG_NAME=$(git describe --tags --exact-match)
+             echo "BUILD_REF=$TAG_NAME" >> $GITHUB_ENV
+             echo "Detected BUILD_REF: $TAG_NAME"
           else
-             echo "BUILD_REF=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+             BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+             echo "BUILD_REF=$BRANCH_NAME" >> $GITHUB_ENV
+             echo "Detected BUILD_REF: $BRANCH_NAME"
           fi
-          echo "Detected BUILD_REF: $BUILD_REF"
 
 
 

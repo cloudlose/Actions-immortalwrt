@@ -226,8 +226,9 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
         if [ "${UPLOAD_GOFILE}" = "true" ] && [ -n "${{ steps.gofile.outputs.url }}" ]; then
-        echo "🔗 GoFile" >> release.txt
+          echo "🔗 GoFile" >> release.txt
         fi
+        echo "" >> release.txt
         {
           echo "## Immortalwrt master分支 高通410系列"
           echo "- 管理地址: 192.168.100.1"
@@ -241,8 +242,7 @@ jobs:
         } >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
-
-
+ 
     - name: Generate file list
       if: env.UPLOAD_RELEASE == 'true' && steps.organize.outputs.status == 'success'
       run: |

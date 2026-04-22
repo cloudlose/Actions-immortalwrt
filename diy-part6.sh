@@ -1,14 +1,10 @@
 #!/bin/bash
 
-cat > feeds.conf << 'EOF'
-src-git packages https://github.com/immortalwrt/packages.git
-src-git luci https://github.com/immortalwrt/luci.git
-src-git routing https://github.com/openwrt/routing.git
-src-git telephony https://github.com/openwrt/telephony.git
-src-git video https://github.com/openwrt/video.git
-#src-git targets https://github.com/openwrt/targets.git
-#src-git oldpackages http://git.openwrt.org/packages.git
-#src-link custom /usr/src/openwrt/custom-feed
-EOF
 
+# hlk7628dna dts
+mkdir -p target/linux/ramips/dts/
+cp -f "$GITHUB_WORKSPACE/scripts/dts/mt7628an_hilink_hlk-7628dna.dts" "target/linux/ramips/dts/mt7628an_hilink_hlk-7628dna.dts"
 
+# hlk7628dna mk
+mkdir -p target/linux/ramips/image/
+cp -f "$GITHUB_WORKSPACE/scripts/image/mt76x8.mk" "target/linux/ramips/image/mt76x8.mk"

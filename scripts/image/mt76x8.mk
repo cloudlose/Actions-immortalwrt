@@ -343,18 +343,17 @@ define Device/hilink_hlk-7628n
   IMAGE_SIZE := 32448k
   DEVICE_VENDOR := HILINK
   DEVICE_MODEL := HLK-7628N
-  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ehci
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci
 endef
 TARGET_DEVICES += hilink_hlk-7628n
 
-define Device/hilink_hlk-7628dna
+define Device/hilink_hlk-7628d
   IMAGE_SIZE := 32448k
-  DEVICE_VENDOR := Hi-Link
-  DEVICE_MODEL := HLK-7628DNA
-  SUPPORTED_DEVICES := hlk-7628dna
-  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ehci
+  DEVICE_VENDOR := HiLink
+  DEVICE_MODEL := HLK-7628D
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci
 endef
-TARGET_DEVICES += hilink_hlk-7628dna
+TARGET_DEVICES += hilink_hlk-7628d
 
 define Device/hilink_hlk-7688a
   IMAGE_SIZE := 32448k

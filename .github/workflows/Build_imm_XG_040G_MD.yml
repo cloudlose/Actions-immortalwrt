@@ -69,11 +69,6 @@ jobs:
        fi
        echo "CONFIG_FILE=config/040.config" >> $GITHUB_ENV
 
-
-
- 
-    
-    
     - name: Initialization environment
       id: init
       env:
@@ -81,6 +76,11 @@ jobs:
       run: |
         sudo -E apt-get -y update
         sudo -E apt-get -y install $(curl -fsSL https://raw.githubusercontent.com/xuxin1955/depend_ubuntu2204_openwrt/refs/heads/main/depend_ubuntu2204_openwrt)
+
+        echo "status=success" >> "$GITHUB_OUTPUT"
+
+    - name: mkbootimg build
+      run: |
         wget https://github.com/xuxin1955/depend_ubuntu2204_openwrt/releases/download/ubuntu_26.04_LTS_mkbootimg/mkbootimg_34.0.5-12build1_all.deb
         sudo dpkg -i mkbootimg_34.0.5-12build1_all.deb
         sudo apt-get install -f -y
@@ -221,16 +221,21 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && steps.organize.outputs.status == 'success'
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
-        cat <<EOF > release.txt
-        🚀 OpenWrt firmware for XG_040G_MD
-        ----------------------
-        设备: XG-040G-MD
-        时间: $(date +"%Y-%m-%d %H:%M")
-        内核版本: 6.12.X
-        源码仓库: $REPO_URL
-        分支: $REPO_BRANCH
-        EOF
+        echo "🚀 OpenWrt firmware for XG_040G_MD" >> release.txt
+        echo "----------------------" >> release.txt
+        echo "设备: XG-040G-MD" >> release.txt
+        echo "时间: $(date +"%Y-%m-%d %H:%M")" >> release.txt
+        echo "内核版本: $(grep -h "kmod-usb2" ${{ env.FIRMWARE }}/*.manifest 2>/dev/null | awk -F' - ' '{print $2}' | grep -oP '6\.[0-9]+\.[0-9]+' | head -1 || echo '未知')" >> release.txt
+        echo "源码仓库: ${{ env.REPO_URL }}" >> release.txt
+        echo "分支: ${{ env.REPO_BRANCH }}" >> release.txt
+        echo "管理地址: 192.168.100.1" >> release.txt
+        echo "默认账号: root / 无密码" >> release.txt
+        echo "" >> release.txt
+        echo "### 主要插件" >> release.txt
+        echo "#### luci-app 系列" >> release.txt
+        grep -h "luci-app-" ${{ env.FIRMWARE }}/*.manifest 2>/dev/null | awk -F':' '{print $NF}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | grep -oP 'luci-app-[a-zA-Z0-9_-]+' | sort -u | sed 's/^/- /' >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
+
 
     - name: Generate file list
       if: env.UPLOAD_RELEASE == 'true' && steps.organize.outputs.status == 'success'

@@ -10,6 +10,39 @@
 
 资源 性能有限，请勿添加过多软件包！！！ 超6小时将自动断开
 
+7628N模块
+![7628N模块](https://raw.githubusercontent.com/xuxin1955/Actions-immortalwrt/main/pics/GIF_20260417_073543.gif)
+
+## 5G壳搭配7628N 模块底座 PCB
+- 开源地址 1：[点击查看](https://oshwhub.com/w1239101315/project_opuesebx)
+- 开源地址 2：[点击查看](https://oshwhub.com/pang94/project_eawoqvux)
+
+
+
+7628N刷机命令 自己按照自己固件名字 ip地址 对应修正！！！
+
+
+ssh推送刷机命令参考！！！
+
+保配置刷机命令 cat immortalwrt-ramips-mt76x8-hilink_hlk-7628n-squashfs-sysupgrade.bin | ssh root@192.168.1.1 "cat > /tmp/fw.bin && sysupgrade /tmp/fw.bin"
+
+
+不保配置刷机命令 cat immortalwrt-ramips-mt76x8-hilink_hlk-7628n-squashfs-sysupgrade.bin | ssh root@192.168.1.1 "cat > /tmp/fw.bin && sysupgrade -n /tmp/fw.bin"
+
+
+![7628N模块](https://raw.githubusercontent.com/xuxin1955/Actions-immortalwrt/main/pics/Screenshot_2026-04-21-00-24-09-14_9e8df3d0c7c1f50248b6ee043a653d26.jpg)
+
+
+命令推送刷机后，保持模块供电稳定切勿断电，等模块灯闪后即可！！！
+
+
+
+**RYLink-7628N Datasheet v2.0手册**  
+👉 [点击查看 PDF](https://github.com/xuxin1955/Actions-immortalwrt/blob/main/pics/RYLink-7628N%20datasheet%20v2.0.pdf)  
+⚠️ **若无法加载，请刷新页面**
+
+
+
 固件主要添加超多 无线网卡驱动为目的!
 
 目前开启usb网络共享驱动
@@ -60,9 +93,12 @@ Bus 001 Device 015: ID 3625:0110 AICSemi AIC8800DC
 8812CU和8811CU都能完美驱动
 
 
-![RTL8811CU网卡](https://raw.githubusercontent.com/xuxin1955/Actions-OpenWrt/main/pics/mmexport1769855276375.jpg)
+![RTL8811CU网卡](https://github.com/xuxin1955/Actions-immortalwrt/raw/main/pics/tb_image_share_1776824849109.png)
 
 ![410插8811CU网卡](https://raw.githubusercontent.com/xuxin1955/Actions-OpenWrt/main/pics/GIF_20260131_184804.gif)
+
+
+
 ## Credits
 
 - [Microsoft Azure](https://azure.microsoft.com)
@@ -78,3 +114,4 @@ Bus 001 Device 015: ID 3625:0110 AICSemi AIC8800DC
 ## License
 
 [MIT](https://github.com/P3TERX/Actions-OpenWrt/blob/main/LICENSE) © [**P3TERX**](https://p3terx.com)
+

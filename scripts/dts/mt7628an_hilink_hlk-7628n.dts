@@ -51,18 +51,6 @@
 	status      = "okay";
 };
 
-&usb_phy {
-	status      = "okay";
-};
-
-&ehci {
-	status      = "okay";
-};
-
-&ohci {
-	status      = "okay";
-};
-
 &spi0 {
 	status      = "okay";
 

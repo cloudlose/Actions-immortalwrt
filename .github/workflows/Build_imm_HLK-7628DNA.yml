@@ -1,4 +1,4 @@
-name: Build_imm_HLK-7628DNA
+name: Build_imm_HLK-7628D
 
 on:
   repository_dispatch:

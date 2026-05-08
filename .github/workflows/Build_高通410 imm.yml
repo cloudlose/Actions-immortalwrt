@@ -266,9 +266,9 @@ jobs:
         export CCACHE_BASEDIR=$PWD
         mkdir -p $CCACHE_DIR
 
-        make -j$(nproc) CC="ccache gcc" CXX="ccache g++" 2>&1 | tee build.log || \
-        make -j1 V=s CC="ccache gcc" CXX="ccache g++" 2>&1 | tee build.log
-
+        make -j$(nproc) CC="ccache gcc" CXX="ccache g++" 2>&1 | tee build.log || {
+          make -j4 V=s CC="ccache gcc" CXX="ccache g++"
+        }
         echo "✅ ccache 统计："
         ccache -s
 

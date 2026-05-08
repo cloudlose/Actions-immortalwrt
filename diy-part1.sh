@@ -13,16 +13,8 @@
 mkdir -p target/linux/msm89xx/dts/
 cp -f "$GITHUB_WORKSPACE/scripts/dts/msm8916.dtsi" "target/linux/msm89xx/dts/msm8916.dtsi"
 
-# Uncomment a feed source
-# sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
-# Add a feed source
-# echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-# echo 'src-git passwall https://github.com/Openwrt-Passwall/openwrt-passwall2' >>feeds.conf.default
-
-# echo 'src-git modemfeed https://github.com/koshev-msk/modemfeed' >>feeds.conf.default
-# echo 'src-git smpackage https://github.com/kenzok8/small-package' >>feeds.conf.default
-# echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
+# aic8800
+sed -i -e 's/aic8800DC_fdrv\.ko/aic8800_fdrv.ko/g' -e 's/aic_load_fw aic8800DC_fdrv/aic_load_fw aic8800_fdrv/g' package/kernel/aic8800/Makefile
 
 
 # OpenClash
@@ -46,3 +38,6 @@ sed -i 's|src-git-full openstick https://github.com/lkiuyu/openstick-feeds.git|s
 
 # inspect
 echo ">>> OPP VOLTAGE COUNT: $(grep -c 'opp-microvolt' target/linux/msm89xx/dts/msm8916.dtsi) <<<"
+
+# aic8800
+grep -n "aic8800_fdrv\|aic8800DC_fdrv" package/kernel/aic8800/Makefile

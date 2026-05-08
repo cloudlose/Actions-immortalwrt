@@ -154,7 +154,7 @@ jobs:
     - name: Download package
       working-directory: ./openwrt
       run: |
-        make download -j4 V=s
+        make download -j8
         find dl -size -1024c -delete
 
     - name: 查看 openwrt 目录

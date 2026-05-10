@@ -2,12 +2,9 @@
 
 
 # rm dts
-sed -i '/&flash0 {/,/};/d' target/linux/ramips/dts/mt7620a_zbtlink_zbt-we826-e.dts
-sed -i '/&flash0 {/,/};/d' target/linux/ramips/dts/mt7620a_zbtlink_zbt-we826-32m.dts
-sed -i '/&flash0 {/,/};/d' target/linux/ramips/dts/mt7620a_zte_q7.dts
-sed -i '/&flash0 {/,/};/d' target/linux/ramips/dts/mt7620n_zbtlink_zbt-wr8305rt.dts
-
+find target/linux/ramips/dts/ -type f $ -name "*.dts" -o -name "*.dtsi" $ -exec sed -i '/&flash0 {/,/};/d' {} \;
 grep -r "&flash0 {" target/linux/ramips/dts/ || echo "✅ 全部清空！"
+
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_generate

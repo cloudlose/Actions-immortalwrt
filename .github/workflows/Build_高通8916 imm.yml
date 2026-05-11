@@ -272,7 +272,7 @@ jobs:
           echo "✅ 并行编译成功"
         else
           echo "⚠️ 并行编译失败，切换到单线程详细模式..."
-          make -j4 V=s CC="ccache gcc" CXX="ccache g++" || exit 1
+          make -j$(nproc) V=s CC="ccache gcc" CXX="ccache g++" || exit 1
         fi
         
         echo "✅ ccache 统计："

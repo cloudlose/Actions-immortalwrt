@@ -49,7 +49,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -62,13 +62,13 @@ jobs:
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
       with:
-        tool-cache: true
-        android: true
-        dotnet: true
-        haskell: true
+        tool-cache: false
+        android: false
+        dotnet: false
+        haskell: false
         large-packages: false
         docker-images: false
-        swap-storage: true
+        swap-storage: false
         
     - name: Manual Setup Swap
       run: |

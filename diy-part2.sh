@@ -18,10 +18,6 @@ git clone https://github.com/lkiuyu/DbusSmsForwardCPlus package/DbusSmsForwardCP
 
 # luci-app-mmconfig
 git clone https://github.com/xuxin1955/luci-app-mmconfig package/luci-app-mmconfig
-git clone https://github.com/xuxin1955/openstick-feeds/tree/master/utils/luci-app-travelmate-mod package/luci-app-travelmate-mod
-git clone https://github.com/xuxin1955/openstick-feeds/tree/master/utils/luci-app-modeminfo package/luci-app-modeminfo
-
-
 
 
 

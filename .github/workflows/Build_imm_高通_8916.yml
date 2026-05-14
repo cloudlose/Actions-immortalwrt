@@ -148,6 +148,8 @@ jobs:
         ./scripts/feeds update -a
         
         rm -rf feeds/luci/applications/luci-app-travelmate
+        [ ! -d "feeds/luci/applications/luci-app-travelmate" ] && echo "✅ Official luci-app-travelmate deleted" || echo "❌ Official luci-app-travelmate still exists"
+
 
 
         echo "📌 Local packages feed:"

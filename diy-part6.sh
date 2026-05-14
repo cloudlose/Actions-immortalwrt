@@ -22,5 +22,16 @@ cp -f "$GITHUB_WORKSPACE/scripts/image/01_leds" "target/linux/ramips/mt76x8/base
 
 
 
-# turboacc
-# curl -sSL https://raw.githubusercontent.com/mufeng05/turboacc/main/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+# 写入北大 ImmortalWrt APK 源
+mkdir -p package/base-files/files/etc/apk
+
+cat > package/base-files/files/etc/apk/repositories << 'EOF'
+# This file is auto-generated and build-specific, any changes will be intentionally lost in sysupgrade.
+# Add your custom feeds to /etc/apk/repositories.d/customfeeds.list
+https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/ramips/mt76x8/packages/packages.adb
+https://mirrors.pku.edu.cn/immortalwrt/snapshots/packages/mipsel_24kc/base/packages.adb
+https://mirrors.pku.edu.cn/immortalwrt/snapshots/packages/mipsel_24kc/luci/packages.adb
+https://mirrors.pku.edu.cn/immortalwrt/snapshots/packages/mipsel_24kc/packages/packages.adb
+https://mirrors.pku.edu.cn/immortalwrt/snapshots/packages/mipsel_24kc/routing/packages.adb
+https://mirrors.pku.edu.cn/immortalwrt/snapshots/packages/mipsel_24kc/telephony/packages.adb
+EOF

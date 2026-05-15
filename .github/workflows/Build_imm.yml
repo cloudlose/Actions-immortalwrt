@@ -7,8 +7,8 @@ on:
 
 
 env:
-  REPO_URL: https://github.com/xuxin1955/immortalwrt
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
@@ -18,7 +18,7 @@ env:
   
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout
@@ -38,7 +38,7 @@ jobs:
         haskell: false
         large-packages: false
         docker-images: false
-        swap-storage: true
+        swap-storage: false
 
     - name: space usage check  
       run: |
@@ -124,7 +124,6 @@ jobs:
         
     - name: Load custom DIY_P2_SH
       run: |
-        [ -e files ] && mv files openwrt/files
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
